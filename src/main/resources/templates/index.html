@@ -1,16 +1,882 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/output.css">
-    <link rel="stylesheet" href="icon/fonts/css/all.css">
-    <meta name="viewport" content="width=h1h, initial-scale=1.0">
-    <script src="/webjars/livereload.js"></script>
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passeios de Lanchas - Tour Aquático</title>
+    <link rel="stylesheet" href="/icon/fonts/css/all.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        /* Header e Menu Mobile */
+        header {
+            background-color: #1e73be;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            position: relative;
+        }
+        
+        .logo {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            z-index: 101;
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 101;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        nav {
+            transition: all 0.3s ease;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style-type: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        
+        nav ul li a:hover {
+            color: #ffd700;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/api/placeholder/800/600');
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding-top: 60px;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ffd700;
+            color: #333;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: #e5c100;
+            transform: translateY(-3px);
+        }
+        
+        /* Services Section */
+        .services {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 15px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 30px;
+            color: #1e73be;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: #ffd700;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .service-img {
+            height: 180px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.05);
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            color: #1e73be;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .service-content p {
+            margin-bottom: 20px;
+            color: #666;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #1e73be;
+            padding: 60px 0;
+            color: white;
+        }
+        
+        .testimonials .section-title h2 {
+            color: white;
+        }
+        
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .testimonial-card {
+            background-color: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 15px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            font-size: 15px;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 15px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            height: 150px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: #f9f9f9;
+            padding: 60px 0;
+        }
+        
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        
+        .contact-info h3 {
+            color: #1e73be;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+            color: #666;
+            font-size: 15px;
+        }
+        
+        .contact-form h3 {
+            color: #1e73be;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-size: 15px;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .contact-form textarea {
+            height: 120px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 8px;
+            font-size: 18px;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+        }
+        
+        /* WhatsApp Pop-up */
+        .whatsapp-popup {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.2);
+            width: 300px;
+            max-width: 90%;
+            z-index: 1000;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: all 0.4s ease;
+        }
+        
+        .whatsapp-popup.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        
+        .whatsapp-popup-header {
+            background-color: #25d366;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .whatsapp-popup-header h3 {
+            font-size: 18px;
+            margin: 0;
+        }
+        
+        .whatsapp-popup-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .whatsapp-popup-body {
+            padding: 20px;
+        }
+        
+        .whatsapp-popup-body p {
+            margin-bottom: 15px;
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .whatsapp-popup-body .btn {
+            background-color: #25d366;
+            color: white;
+            width: 100%;
+            margin-top: 10px;
+            padding: 12px;
+        }
+        
+        .whatsapp-popup-body .btn:hover {
+            background-color: #128C7E;
+        }
+        
+        .whatsapp-popup-body .whatsapp-icon {
+            font-size: 25px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        
+        /* Media Queries for Mobile */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: #1e73be;
+                flex-direction: column;
+                padding-top: 80px;
+                transition: 0.3s;
+                box-shadow: 5px 0 10px rgba(0,0,0,0.1);
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            nav ul li {
+                margin: 0;
+                width: 100%;
+                text-align: center;
+                padding: 15px 0;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            
+            nav ul li a {
+                font-size: 18px;
+                display: block;
+                width: 100%;
+            }
+            
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.7);
+                z-index: 99;
+                opacity: 0;
+                visibility: hidden;
+                transition: 0.3s;
+            }
+            
+            .overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .hero {
+                padding-top: 70px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .btn {
+                padding: 10px 25px;
+                font-size: 15px;
+            }
+            
+            .section-title h2 {
+                font-size: 26px;
+            }
+            
+            .service-content h3 {
+                font-size: 18px;
+            }
+            
+            .service-content p {
+                font-size: 14px;
+            }
+            
+            .testimonial-text {
+                font-size: 15px;
+            }
+            
+            .testimonial-author {
+                font-size: 14px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .gallery-item {
+                height: 120px;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+            }
+            
+            .whatsapp-popup {
+                bottom: 20px;
+                right: 15px;
+                width: calc(100% - 30px);
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1 class=" bg-amber-200 ">hello world </h1>
-    <p>te amo  ddd   </p>
-    <i class="fa-solid fa-house text-black  "></i>
+    <header>
+        <div class="header-container">
+            <div class="logo">Tour Aquático</div>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Passeios</a></li>
+                    <li><a href="#gallery">Galeria</a></li>
+                    <li><a href="#testimonials">Depoimentos</a></li>
+                    <li><a href="#contact">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="overlay" id="overlay"></div>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Experiências Inesquecíveis em Alto Mar</h1>
+            <p>Desfrute dos melhores passeios de lanchas e conheça as mais belas praias e ilhas</p>
+            <a href="#contact" class="btn">Agende seu passeio</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="section-title">
+            <h2>Nossos Passeios</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="/img/desktop/passeio.webp" alt="Passeio de lancha">
+                </div>
+                <div class="service-content">
+                    <h3>Passeio às Ilhas</h3>
+                    <p>Conheça as mais belas ilhas da região em um passeio inesquecível de lancha.</p>
+                    <a href="#" class="btn">Saiba mais</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="/img/desktop/pordosol.jpg" alt="Pôr do sol">
+                </div>
+                <div class="service-content">
+                    <h3>Pôr do Sol</h3>
+                    <p>Desfrute de um romântico passeio de lancha ao entardecer com champagne e petiscos.</p>
+                    <a href="#" class="btn">Saiba mais</a>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="/api/placeholder/400/300" alt="Mergulho">
+                </div>
+                <div class="service-content">
+                    <h3>Expedição de Mergulho</h3>
+                    <p>Aventure-se nos melhores pontos de mergulho com equipamento profissional.</p>
+                    <a href="#" class="btn">Saiba mais</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="testimonials-container">
+            <div class="section-title">
+                <h2>Depoimentos</h2>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Experiência incrível! A equipe é super atenciosa e profissional. O passeio às ilhas superou todas as nossas expectativas. Recomendo muito!"</p>
+                <p class="testimonial-author">- Maria Silva</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"O passeio de pôr do sol foi um dos momentos mais românticos da nossa viagem. A vista é de tirar o fôlego e o serviço de bordo é impecável."</p>
+                <p class="testimonial-author">- João e Ana Pereira</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <div class="section-title">
+            <h2>Galeria</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="/api/placeholder/300/300" alt="Imagem de passeio 1">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/300/300" alt="Imagem de passeio 2">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/300/300" alt="Imagem de passeio 3">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/300/300" alt="Imagem de passeio 4">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/300/300" alt="Imagem de passeio 5">
+            </div>
+            <div class="gallery-item">
+                <img src="/api/placeholder/300/300" alt="Imagem de passeio 6">
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Entre em Contato</h3>
+                <p><strong>Telefone:</strong> (00) 00000-0000</p>
+                <p><strong>WhatsApp:</strong> (00) 00000-0000</p>
+                <p><strong>Email:</strong> contato@touraquatico.com.br</p>
+                <p><strong>Endereço:</strong> Av. Beira Mar, 1000 - Centro</p>
+            </div>
+            <div class="contact-form">
+                <h3>Envie uma Mensagem</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Flutuante -->
+    <a href="javascript:void(0);" class="whatsapp-float" id="whatsapp-float">
+        <i class="fa-brands fa-whatsapp fa-lg z-50 "></i>
+    </a>
+
+    <!-- WhatsApp Pop-up -->
+    <div class="whatsapp-popup" id="whatsapp-popup">
+        <div class="whatsapp-popup-header">
+            <h3>Tour Aquático</h3>
+            <button class="whatsapp-popup-close" id="whatsapp-popup-close">×</button>
+        </div>
+        <div class="whatsapp-popup-body">
+            <p><strong>Olá! 👋</strong></p>
+            <p>Gostaria de saber mais sobre nossos passeios de lanchas ou fazer uma reserva?</p>
+            <p>Fale agora mesmo com nosso atendimento via WhatsApp!</p>
+            <a href="https://wa.me/5500000000000" target="_blank" class="btn">
+                <span class="whatsapp-icon"><i class="fa-brands fa-whatsapp fa-lg"></i></span> Conversar no WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <p>© 2025 Tour Aquático - Todos os direitos reservados</p>
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">WhatsApp</a>
+            </div>
+            <p>Desenvolvido por Tour Aquático</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menu mobile toggle
+            const mobileMenu = document.getElementById('mobile-menu');
+            const nav = document.getElementById('nav');
+            const overlay = document.getElementById('overlay');
+            
+            mobileMenu.addEventListener('click', function() {
+                nav.classList.toggle('active');
+                overlay.classList.toggle('active');
+                
+                // Animate menu icon
+                const spans = mobileMenu.querySelectorAll('span');
+                if (nav.classList.contains('active')) {
+                    spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    spans[1].style.opacity = '0';
+                    spans[2].style.transform = 'rotate(-45deg) translate(7px, -8px)';
+                } else {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            });
+            
+            // Close menu when clicking on overlay
+            overlay.addEventListener('click', function() {
+                nav.classList.remove('active');
+                overlay.classList.remove('active');
+                
+                // Reset menu icon
+                const spans = mobileMenu.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            });
+            
+            // Close menu when clicking on a menu item
+            const menuItems = document.querySelectorAll('nav ul li a');
+            menuItems.forEach(function(item) {
+                item.addEventListener('click', function() {
+                    nav.classList.remove('active');
+                    overlay.classList.remove('active');
+                    
+                    // Reset menu icon
+                    const spans = mobileMenu.querySelectorAll('span');
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                });
+            });
+            
+            // WhatsApp Pop-up
+            const whatsappFloat = document.getElementById('whatsapp-float');
+            const whatsappPopup = document.getElementById('whatsapp-popup');
+            const whatsappPopupClose = document.getElementById('whatsapp-popup-close');
+            
+            // Mostrar pop-up ao clicar no ícone flutuante
+            whatsappFloat.addEventListener('click', function() {
+                whatsappPopup.classList.add('active');
+            });
+            
+            // Fechar pop-up
+            whatsappPopupClose.addEventListener('click', function() {
+                whatsappPopup.classList.remove('active');
+            });
+            
+            // Mostrar pop-up automaticamente após 10 segundos
+            setTimeout(function() {
+                whatsappPopup.classList.add('active');
+            }, 10000);
+            
+            // Mostrar pop-up quando o usuário rolar até 50% da página
+            let popupShown = false;
+            window.addEventListener('scroll', function() {
+                if (!popupShown && window.scrollY > (document.body.scrollHeight * 0.3)) {
+                    whatsappPopup.classList.add('active');
+                    popupShown = true;
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    if (this.getAttribute('href') !== '#') {
+                        e.preventDefault();
+                        
+                        const target = document.querySelector(this.getAttribute('href'));
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        
+                        window.scrollTo({
+                            top: target.offsetTop - headerHeight,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
