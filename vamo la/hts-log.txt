@@ -1,0 +1,39 @@
+HTTrack3.49-2+htsswf+htsjava launched on Tue, 15 Apr 2025 23:12:46 at https://lhtourlanchas.com.br/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://lhtourlanchas.com.br/ -O1 "C:\Meus Sites\vamo la" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+23:13:27	Error: 	"Forbidden" (403) at link https://lhtourlanchas.com.br/xmlrpc.php?rsd (from https://lhtourlanchas.com.br/)
+23:15:27	Error: 	"Not Found" (404) at link https://lhtourlanchas.com.br/wp-content/plugins/ht-mega-for-elementor/assets/css/img/gallery/bgDescription.png (from https://lhtourlanchas.com.br/wp-content/plugins/ht-mega-for-elementor/assets/css/htmega-widgets.css?ver=1.6.5)
+23:15:27	Error: 	"Not Found" (404) at link https://lhtourlanchas.com.br/wp-content/plugins/ht-mega-for-elementor/assets/css/img/gallery/gallery-e1.jpg (from https://lhtourlanchas.com.br/wp-content/plugins/ht-mega-for-elementor/assets/css/htmega-widgets.css?ver=1.6.5)
+23:15:27	Error: 	"Not Found" (404) at link https://lhtourlanchas.com.br/wp-content/plugins/ht-mega-for-elementor/assets/css/img/bg/bg-image-12.jpg (from https://lhtourlanchas.com.br/wp-content/plugins/ht-mega-for-elementor/assets/css/htmega-widgets.css?ver=1.6.5)
+23:15:27	Error: 	"Not Found" (404) at link https://lhtourlanchas.com.br/wp-content/plugins/ht-mega-for-elementor/assets/css/img/others/business-shape.png (from https://lhtourlanchas.com.br/wp-content/plugins/ht-mega-for-elementor/assets/css/htmega-widgets.css?ver=1.6.5)
+23:15:27	Error: 	"Not Found" (404) at link https://lhtourlanchas.com.br/wp-content/plugins/ht-mega-for-elementor/assets/css/img/bg/bg-image-40.jpg (from https://lhtourlanchas.com.br/wp-content/plugins/ht-mega-for-elementor/assets/css/htmega-widgets.css?ver=1.6.5)
+23:15:28	Error: 	"Not Found" (404) at link https://lhtourlanchas.com.br/POST (from https://connect.facebook.net/en_US/fbevents.js)
+23:15:28	Error: 	"Not Found" (404) at link https://lhtourlanchas.com.br/schema.org/ (from https://connect.facebook.net/en_US/fbevents.js)
+23:15:28	Error: 	"Not Found" (404) at link https://lhtourlanchas.com.br/b.resolvedLink (from https://connect.facebook.net/en_US/fbevents.js)
+23:15:28	Error: 	"Not Found" (404) at link https://lhtourlanchas.com.br/signals/iwl.js (from https://connect.facebook.net/en_US/fbevents.js)
+23:15:28	Error: 	"Not Found" (404) at link https://lhtourlanchas.com.br/c.dl (from https://connect.facebook.net/en_US/fbevents.js)
+23:15:28	Error: 	"Not Found" (404) at link https://lhtourlanchas.com.br/c.rl (from https://connect.facebook.net/en_US/fbevents.js)
+23:15:28	Warning: 	Moved Permanently for https://lhtourlanchas.com.br/?p=1564
+23:15:28	Warning: 	File has moved from https://lhtourlanchas.com.br/?p=1564 to https://lhtourlanchas.com.br/roteiros/
+23:15:28	Warning: 	Moved Permanently for https://lhtourlanchas.com.br/?p=1782
+23:15:28	Warning: 	File has moved from https://lhtourlanchas.com.br/?p=1782 to https://lhtourlanchas.com.br/armacao-dos-buzios/
+23:15:28	Warning: 	Moved Permanently for https://lhtourlanchas.com.br/?p=2560
+23:15:28	Warning: 	File has moved from https://lhtourlanchas.com.br/?p=2560 to https://lhtourlanchas.com.br/arraial-do-cabo/
+23:15:28	Warning: 	Moved Permanently for https://lhtourlanchas.com.br/?p=2558
+23:15:28	Warning: 	File has moved from https://lhtourlanchas.com.br/?p=2558 to https://lhtourlanchas.com.br/cabo-frio/
+23:15:28	Warning: 	Moved Permanently for https://lhtourlanchas.com.br/?p=2240
+23:15:28	Warning: 	File has moved from https://lhtourlanchas.com.br/?p=2240 to https://lhtourlanchas.com.br/embarcacoes/
+23:15:28	Warning: 	Moved Permanently for https://lhtourlanchas.com.br/?p=1443
+23:15:28	Warning: 	File has moved from https://lhtourlanchas.com.br/?p=1443 to https://lhtourlanchas.com.br/quem-somos/
+23:15:28	Warning: 	Moved Permanently for https://lhtourlanchas.com.br/?p=1223
+23:15:28	Warning: 	File has moved from https://lhtourlanchas.com.br/?p=1223 to https://lhtourlanchas.com.br/contact/
+23:15:28	Warning: 	Moved Permanently for https://lhtourlanchas.com.br/?p=3026
+23:15:28	Warning: 	File has moved from https://lhtourlanchas.com.br/?p=3026 to https://lhtourlanchas.com.br/termos-de-contrato/
+
+HTTrack Website Copier/3.49-2 mirror complete in 2 minutes 42 seconds : 479 links scanned, 458 files written (23940138 bytes overall) [23865005 bytes received at 147314 bytes/sec], 318139 bytes transferred using HTTP compression in 2 files, ratio 26%
+(12 errors, 16 warnings, 0 messages)
