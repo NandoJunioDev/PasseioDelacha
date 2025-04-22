@@ -136,11 +136,13 @@ nav ul li a:hover {
     transform: translateY(-3px);
 }
 
-/* Services Section */
+/* roteiros Section */
 .services {
     max-width: 1200px;
     margin: 60px auto;
     padding: 0 15px;
+    
+
 }
 
 .section-title {
@@ -167,9 +169,15 @@ nav ul li a:hover {
 }
 
 .services-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 25px;
+   
+    
+    gap: 30px ;
+
+    
+    
+
+    
+    
 }
 
 .service-card {
@@ -178,6 +186,7 @@ nav ul li a:hover {
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
+    
 }
 
 .service-card:hover {
